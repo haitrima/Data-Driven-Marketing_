@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Analytics Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }h1, h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    .container {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    canvas {
+        max-width: 700px;
+        margin: auto;
+        display: block;
+    }
+
+    .output {
+        background: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+</style>
+
+</head>
+<body><h1>Marketing Analytics Dashboard</h1>
+
+<div class="container">
+    <h2>Customer Marketing Data</h2>
+    <table>
+        <tr>
+            <th>Customer</th>
+            <th>Age</th>
+            <th>Purchase</th>
+        </tr>
+        <tr><td>A</td><td>22</td><td>2000</td></tr>
+        <tr><td>B</td><td>25</td><td>3000</td></tr>
+        <tr><td>C</td><td>47</td><td>1500</td></tr>
+        <tr><td>D</td><td>52</td><td>5000</td></tr>
+        <tr><td>E</td><td>46</td><td>4200</td></tr>
+    </table>
+
+    <div class="output" id="averagePurchase"></div>
+
+    <canvas id="purchaseChart"></canvas>
+</div>
+
+<div class="container">
+    <h2>Customer Segmentation</h2>
+
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Purchase Amount</th>
+            <th>Customer Segment</th>
+        </tr>
+        <tr><td>Riya</td><td>1200</td><td>High Value</td></tr>
+        <tr><td>Aman</td><td>450</td><td>Low Value</td></tr>
+        <tr><td>Priya</td><td>700</td><td>Medium Value</td></tr>
+        <tr><td>Rahul</td><td>300</td><td>Low Value</td></tr>
+        <tr><td>Sneha</td><td>1500</td><td>High Value</td></tr>
+        <tr><td>Arjun</td><td>850</td><td>Medium Value</td></tr>
+    </table>
+
+    <canvas id="segmentChart"></canvas>
+</div>
+
+<div class="container">
+    <h2>Predictive Analytics</h2>
+    <div class="output" id="predictionOutput"></div>
+</div>
+
+<div class="container">
+    <h2>Machine Learning Prediction</h2>
+    <div class="output">
+        Prediction for customer age 40: 1
+    </div>
+</div>
+
+<div class="container">
+    <h2>Sales Forecasting</h2>
+    <div class="output">
+        Month 7 : 4000 <br>
+        Month 8 : 4500 <br>
+        Month 9 : 5000
+    </div>
+</div>
+
+<div class="container">
+    <h2>Marketing Dashboard</h2>
+    <canvas id="dashboardChart"></canvas>
+</div>
+
+<div class="container">
+    <h2>Recommendation System</h2>
+
+    <table>
+        <tr>
+            <th>Customer</th>
+            <th>Purchased Product</th>
+            <th>Recommended Product</th>
+        </tr>
+        <tr><td>Riya</td><td>Mobile</td><td>Smart Watch</td></tr>
+        <tr><td>Aman</td><td>Laptop</td><td>Mouse</td></tr>
+        <tr><td>Sneha</td><td>Headphones</td><td>Bluetooth Speaker</td></tr>
+        <tr><td>Rahul</td><td>Mobile</td><td>Power Bank</td></tr>
+    </table>
+</div>
+
+<div class="container">
+    <h2>Model Accuracy</h2>
+    <div class="output">
+        Accuracy: 83.33%
+    </div>
+</div>
+
+<div class="container">
+    <h2>Monthly Sales Analysis</h2>
+    <canvas id="salesChart"></canvas>
+</div>
+
+<div class="container">
+    <h2>Customer Purchase Prediction</h2>
+    <div class="output">
+        Customer Purchase Prediction: 1
+    </div>
+</div>
+
+<div class="container">
+    <h2>Business Insights Report</h2>
+    <ul>
+        <li>Sales are increasing every month.</li>
+        <li>Customers aged between 40-55 purchase more products.</li>
+        <li>Electronic products have higher demand.</li>
+        <li>Predictive analytics helps forecast future sales.</li>
+        <li>Recommendation systems improve customer engagement.</li>
+        <li>Data visualization helps in better business decision-making.</li>
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Conclusion</h2>
+    <p>
+        This project demonstrates how data-driven marketing helps businesses
+        make better decisions using analytics, customer segmentation,
+        predictive analytics, machine learning, and sales forecasting.
+    </p>
+</div>
+
+<div class="container">
+    <h2>Future Scope</h2>
+    <ul>
+        <li>Use real-time data.</li>
+        <li>Improve prediction accuracy with advanced AI.</li>
+        <li>Integrate cloud-based analytics systems.</li>
+        <li>Automate customer behaviour tracking.</li>
+        <li>Enhance marketing using AI chatbots.</li>
+        <li>Use big data technologies for large-scale analysis.</li>
+    </ul>
+</div>
+
+<script>
+
+    // Average Purchase Calculation
+    const purchases = [2000, 3000, 1500, 5000, 4200];
+    const average = purchases.reduce((a,b) => a+b,0) / purchases.length;
+    document.getElementById("averagePurchase").innerHTML =
+        "Average Purchase: " + average;
+
+    // Customer Purchase Bar Chart
+    new Chart(document.getElementById('purchaseChart'), {
+        type: 'bar',
+        data: {
+            labels: ['A','B','C','D','E'],
+            datasets: [{
+                label: 'Purchase Amount',
+                data: purchases
+            }]
+        }
+    });
+
+    // Customer Segmentation Pie Chart
+    new Chart(document.getElementById('segmentChart'), {
+        type: 'pie',
+        data: {
+            labels: ['High Value', 'Medium Value', 'Low Value'],
+            datasets: [{
+                data: [2,2,2]
+            }]
+        }
+    });
+
+    // Predictive Analytics
+    document.getElementById('predictionOutput').innerHTML =
+        'Predicted Sales for Month 6: 4500';
+
+    // Marketing Dashboard Chart
+    new Chart(document.getElementById('dashboardChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Product A','Product B','Product C','Product D'],
+            datasets: [{
+                label: 'Sales',
+                data: [5000,7000,6000,8000]
+            }]
+        }
+    });
+
+    // Monthly Sales Analysis Line Chart
+    new Chart(document.getElementById('salesChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan','Feb','Mar','Apr','May'],
+            datasets: [{
+                label: 'Sales',
+                data: [1200,1800,2500,3000,3500]
+            }]
+        }
+    });
+
+</script></body>
+</html>
